@@ -4,4 +4,6 @@ services:
     env: python
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn boardproject.wsgi:application"
-    preDeployCommand: "python manage.py migrate"
+    preDeployCommand: |
+      python manage.py makemigrations board
+      python manage.py migrate
