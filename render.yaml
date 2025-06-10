@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: boardproject
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn boardproject.wsgi:application"
+    preDeployCommand: "python manage.py migrate"
